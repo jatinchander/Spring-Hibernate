@@ -43,6 +43,8 @@ public class TestDbServlet extends HttpServlet {
 			out.println("SUCCESS!!!");
 			
 			myConn.close();
+		
+			
 			
 		} catch (Exception e) {
 			e.printStackTrace();
