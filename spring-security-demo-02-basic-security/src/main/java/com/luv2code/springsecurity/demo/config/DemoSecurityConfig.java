@@ -38,7 +38,9 @@ public class DemoSecurityConfig extends WebSecurityConfigurerAdapter {
 			// (Note: controller mapping is needed for this ^)
 			.loginProcessingUrl("/authenticateTheUser") // submit data & check credentials
 			// (Note: no controller mapping is needed for this ^)
-			.permitAll(); // allow everyone to see login page
+			.permitAll() // allow everyone to see login page
+			.and()
+			.logout().permitAll(); // adds logout support
 		
 	}
 	
