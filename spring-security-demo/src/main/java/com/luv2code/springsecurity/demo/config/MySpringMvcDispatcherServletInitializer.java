@@ -12,7 +12,6 @@ public class MySpringMvcDispatcherServletInitializer extends AbstractAnnotationC
 
 	@Override
 	protected Class<?>[] getServletConfigClasses() {
-		// our demo app config class has the view resolver
 		return new Class[] { DemoAppConfig.class };
 	}
 
@@ -22,3 +21,9 @@ public class MySpringMvcDispatcherServletInitializer extends AbstractAnnotationC
 	}
 
 }
+
+
+
+
+
+
