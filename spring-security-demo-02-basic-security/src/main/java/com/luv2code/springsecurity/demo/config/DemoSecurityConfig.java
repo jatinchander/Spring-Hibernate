@@ -31,7 +31,10 @@ public class DemoSecurityConfig extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception {
 		
 		http.authorizeRequests() // restrict access based on the HTTPServletRequest
-			.anyRequest().authenticated() // user must be logged in
+		//	.anyRequest().authenticated() // user must be logged in
+			.antMatchers("/").hasRole("EMPLOYEE") // root path accessed by any employee
+			.antMatchers("/leaders/**").hasRole("MANAGER") // /leaders accessed by managers only
+			.antMatchers("/systems/**").hasRole("ADMIN") // /systems accessed by admins only
 			.and()
 			.formLogin() // custom login page
 			.loginPage("/showMyLoginPage") // show our custom login
@@ -40,8 +43,9 @@ public class DemoSecurityConfig extends WebSecurityConfigurerAdapter {
 			// (Note: no controller mapping is needed for this ^)
 			.permitAll() // allow everyone to see login page
 			.and()
-			.logout().permitAll(); // adds logout support
-		
+			.logout().permitAll() // adds logout support
+			.and()
+			.exceptionHandling().accessDeniedPage("/access-denied"); // our custom page
 	}
 	
 	
